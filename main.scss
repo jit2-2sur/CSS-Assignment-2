@@ -1,0 +1,143 @@
+// Fonts
+$primary-font: Georgia, 'Times New Roman', Times, serif;
+$secondary-font: Arial, Helvetica, sans-serif;
+
+// color pallete
+$orange: #FF7F00;
+$blue: #0000FF;
+$purple: #80007E;
+$green:#D8DA3D;
+$white: #ffffff;
+$black: #000000;
+
+@mixin border-styles($color, $type, $text-align){
+    border: $type $color;
+    text-align: $text-align;
+    padding: 10px;
+}
+
+// body
+body {
+    background-color: $green;
+    color: $purple;
+    font-family: $primary-font;
+}
+
+// main container
+.main-container {
+    display: flex;
+}
+
+// left side container
+.side-container-left {
+    width: 20%;
+    min-width: 200px;
+    height: 100%;
+    padding: 10px 10px 10px 0px;
+    margin: 10px 25px 0px 0px;
+    float: left;
+}
+
+// right side container
+.side-container-right {
+    width: 80%;
+    padding: 0px;
+
+    // right side container heading
+    h1{
+        margin-top: 0px;
+        font-family: $secondary-font;
+    }
+}
+
+// Box container
+.box-container {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+}
+
+// Text division
+.text-div {
+    padding: 5px;
+
+    p{
+        margin: 0px;
+    }
+}
+
+// Black box
+.black-box {
+    background-color: $black;
+    width: 15px;
+}
+
+// Orange colored black box
+#black-box-orange {
+    //extending basic .black-box properties
+    @extend .black-box;
+    background-color: $orange;
+}
+
+// Blue colored black box
+#black-box-blue {
+    @extend .black-box;
+    background-color: $blue;
+}
+
+// One line text
+#one-line-text {
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Horizontal rule
+hr {
+    border: none;
+    border-top: 1px dotted $purple;
+}
+
+//text box container
+.text-box-container{
+    padding: 5px 50px 0px 0px;
+}
+
+// Common text box styles
+.text-box{ 
+    p{
+        padding: 5px;
+        margin: 10px 80px 10px 0px;
+        color: $black;
+    }
+
+    // Text box variations
+    // .text-box-1
+    &-1{
+        p {
+            //using @mixin property
+            @include border-styles($black, dashed, left);
+        }
+    }
+
+    // .text-box-2
+    &-2{
+        p {
+            //using @mixin property
+            @include border-styles($orange, dashed, right);
+            font-style: italic;
+        }
+    }
+
+    // .text-box-3
+    &-3{
+        p {
+            //using @mixin property
+            @include border-styles($blue, dotted, center);
+            font-weight: bold;
+        }
+    }
+}
